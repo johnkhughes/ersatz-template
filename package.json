@@ -1,0 +1,42 @@
+{
+  "name": "@jkhughes/ersatz-template",
+  "version": "1.0.0",
+  "description": "Bootstrap starter template",
+  "main": "",
+  "scripts": {
+    "build": "npx gulp",
+    "watch": "npx gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnkhughes/ersatz-template.git"
+  },
+  "author": {
+    "name": "John Hughes",
+    "url": "https://www.johnhughesweb.co.uk/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-base64-v2": "^1.0.4",
+    "gulp-cli": "^2.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^4.0.1",
+    "gulp-filter": "^6.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-svgo": "^2.2.1",
+    "gulp-touch-fd": "^2.0.0",
+    "gulp-uglify": "^3.0.2",
+    "object-hash": "^2.0.3"
+  }
+}

@@ -1,0 +1,36 @@
+// Debug styles
+
+// Framework and library configuration
+// @import 'bootstrap';
+
+// Framework and library source
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/mixins';
+
+// Show media breakpoints
+html::after {
+    background: #eee;
+    bottom: 0;
+    color: #000;
+    font-family: monospace, monospace;
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 1.5;
+    padding: 5px 10px;
+    position: fixed;
+    right: 0;
+    z-index: 9999;
+
+    $hue: 0;
+    $step: floor(360 / (length($grid-breakpoints) + 1));
+
+    @each $breakpoint, $size in $grid-breakpoints {
+        @include media-breakpoint-only($breakpoint) {
+            background: hsl($hue, 100%, 75%);
+            content: "#{$breakpoint}";
+        }
+
+        $hue: $hue + $step;
+    }
+}
