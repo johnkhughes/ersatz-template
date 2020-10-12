@@ -5,7 +5,7 @@ Basic, interim Bootstrap starter template. Build and watch tasks are separate:
     npm run build
     npm run watch
 
-The `dist` directory is entirely managed by Gulp. Image optimization is automatic. Optimized SVG images have unique ID attributes to avoid conflicts when embedded in HTML. Append `#base64` to image URLs in Sass to use data URIs instead of external images.
+The `./dist` directory is entirely managed by Gulp. Place images in `./images` and fonts in `./fonts`.
 
 ## Third-party PHP
 
