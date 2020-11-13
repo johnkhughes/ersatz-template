@@ -20,84 +20,64 @@ const touch = require('gulp-touch-fd');
 const uglify = require('gulp-uglify');
 
 // Configuration
-const config = {
-    paths: {
-        src: {
-            css: [
-                './src/scss/**/*.scss'
-            ],
-            js: [
-                './node_modules/jquery/dist/jquery.js',
-                './node_modules/bootstrap/dist/js/bootstrap.js',
-                './src/js/**/*.js'
-            ]
-        },
-        dest: {
-            css: './dist/css',
-            js: './dist/js'
-        }
-    },
-    plugins: {
-        autoprefixer: {
-            remove: false
-        },
-        rename: {
-            suffix: '.min'
-        },
-        sass: {
-            includePaths: [
-                '.'
-            ],
-            outputStyle: 'nested'
-        }
-    }
-};
+const cssSrc = [
+    './src/scss/**/*.scss'
+];
+
+const jsSrc = [
+    './node_modules/jquery/dist/jquery.js',
+    './node_modules/bootstrap/dist/js/bootstrap.js',
+    './src/js/**/*.js'
+];
+
+const cssDest = './dist/css';
+const jsDest = './dist/js';
 
 // Tasks
 function cssClean() {
-    return del(config.paths.dest.css);
+    return del(cssDest);
 }
 
 function jsClean() {
-    return del(config.paths.dest.js);
+    return del(jsDest);
 }
 
 function cssBuild() {
-    return gulp.src(config.paths.src.css)
+    return gulp.src(cssSrc)
         .pipe(plumber())
 
         // Create map(s) and write uncompressed development version
         .pipe(sourcemaps.init())
-        .pipe(sass(config.plugins.sass).on('error', sass.logError))
-        .pipe(autoprefixer(config.plugins.autoprefixer))
+        .pipe(sass({includePaths: ['.']}).on('error', sass.logError))
+        .pipe(autoprefixer())
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(config.paths.dest.css))
+        .pipe(gulp.dest(cssDest))
         .pipe(touch())
 
         // Remove map(s) and write compressed production version
         .pipe(filter('**/*.css'))
-        .pipe(rename(config.plugins.rename))
+        .pipe(rename({suffix: '.min'}))
         .pipe(csso())
-        .pipe(gulp.dest(config.paths.dest.css))
+        .pipe(gulp.dest(cssDest))
         .pipe(touch());
 }
 
 function jsBuild() {
-    return gulp.src(config.paths.src.js)
+    return gulp.src(jsSrc)
         .pipe(plumber())
 
         // Create map(s) and write uncompressed development version
         .pipe(sourcemaps.init())
         .pipe(concat('script.js'))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(config.paths.dest.js))
+        .pipe(gulp.dest(jsDest))
         .pipe(touch())
 
         // Remove map(s) and write compressed production version
         .pipe(filter('**/*.js'))
-        .pipe(rename(config.plugins.rename))
+        .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
-        .pipe(gulp.dest(config.paths.dest.js))
+        .pipe(gulp.dest(jsDest))
         .pipe(touch());
 }
 
@@ -107,8 +87,8 @@ const jsTask = gulp.series(jsClean, jsBuild);
 
 // Combined
 function watch() {
-    gulp.watch(config.paths.src.css, cssTask);
-    gulp.watch(config.paths.src.js, jsTask);
+    gulp.watch(cssSrc, cssTask);
+    gulp.watch(jsSrc, jsTask);
 }
 
 const build = gulp.parallel(cssTask, jsTask);

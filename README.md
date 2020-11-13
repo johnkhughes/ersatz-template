@@ -23,19 +23,13 @@ Install with npm:
 Add JavaScript sources to `gulpfile.js`:
 
 ~~~ javascript
-const config = {
-    paths: {
-        src: {
-            js: [
-                './node_modules/jquery/dist/jquery.js',
-                './node_modules/bootstrap/dist/js/bootstrap.js',
-                './node_modules/magnific-popup/dist/jquery.magnific-popup.js',
-                './node_modules/tiny-slider/dist/tiny-slider.js',
-                './src/js/**/*.js'
-            ]
-        }
-    }
-};
+const jsSrc = [
+    './node_modules/jquery/dist/jquery.js',
+    './node_modules/bootstrap/dist/js/bootstrap.js',
+    './node_modules/magnific-popup/dist/jquery.magnific-popup.js',
+    './node_modules/tiny-slider/dist/tiny-slider.js',
+    './src/js/**/*.js'
+];
 ~~~
 
 Add Sass sources to `src/scss/style.scss`:
