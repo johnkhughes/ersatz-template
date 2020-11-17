@@ -7,6 +7,12 @@ Basic, interim Bootstrap starter template. Build and watch tasks are separate:
 
 The `./dist` directory is entirely managed by Gulp. Place images in `./images` and fonts in `./fonts`.
 
+## Install
+
+Install in `path` with composer:
+
+    composer create-project jkhughes/ersatz-template path
+
 ## Third-party PHP
 
 Install with composer:

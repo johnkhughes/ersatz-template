@@ -1,0 +1,13 @@
+{
+    "name": "jkhughes/ersatz-template",
+    "description": "Bootstrap starter template",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "John Hughes",
+            "email": "hello@johnhughesweb.co.uk",
+            "homepage": "https://www.johnhughesweb.co.uk/"
+        }
+    ],
+    "require": {}
+}
